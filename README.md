@@ -6,5 +6,5 @@
 <h3>What I need</h3>
 <p>- Make webserver to host webapp</p>
 <p>--- frontend - html, css, js</p>
-<p>--- backend framework, c#</p>
+<p>--- backend - framework, c#</p>
 <p>- connect to DB</p>
