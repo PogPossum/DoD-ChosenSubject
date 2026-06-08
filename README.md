@@ -9,4 +9,4 @@
 <p>- backend - framework, python, js</p>
 <p>- connect web app to DB</p>
 <p>- get domain</p>
-<p>safety <i>probably</i></p>
+<p>- safety <i>probably</i></p>
