@@ -5,5 +5,6 @@
 <p>- I want the webapp to have the visuals of a classic termminal, to really add to the retro vibes.</p>
 <h3>What I need</h3>
 <p>- Make webserver to host webapp</p>
-<p>--- html, css, js? framwork?</p>
+<p>--- frontend - html, css, js</p>
+<p>--- backend framework, c#</p>
 <p>- connect to DB</p>
