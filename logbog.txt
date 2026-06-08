@@ -1,0 +1,9 @@
+------------ ------------
+      -- logbog --
+------------ ------------
+
+dag 1, d. 08/06 
+    I dag har været brug på ide udvikling og jeg har leget med den visuelle del af min front end
+    med HTML og CSS.
+
+dag 2,
