@@ -3,10 +3,3 @@
 <h3>Goals</h3>
 <p>- I can browse my collection and search for specific games/consoles, <i>kinda something like Bilbasen</i>.</p>
 <p>- I want the webapp to have the visuals of a classic termminal, to really add to the retro vibes.</p>
-<h3>What I need</h3>
-<p>- Make webserver to host webapp</p>
-<p>- frontend - html, css, js</p>
-<p>- backend - framework, python, js</p>
-<p>- connect web app to DB</p>
-<p>- get domain</p>
-<p>- safety <i>probably</i></p>
