@@ -3,7 +3,22 @@
 ------------ ------------
 
 dag 1, d. 08/06 
-    I dag har været brug på ide udvikling og jeg har leget med den visuelle del af min front end
-    med HTML og CSS.
+    - I dag har været brug på ide udvikling og jeg har leget med den visuelle del af min front end
+      med HTML og CSS.
 
-dag 2,
+dag 2, d. 09/06
+    - Købt cloudflare domæne. regner med at bruge et subdomæne til mit DoD projekt.
+        ashiisarcade.ardenscor.com
+    - behøede ikke at åbne port 1433 i firewall på database VM, da de allerede er åbne pga konsol applikation 
+    - har et python api script til at køre på VM'en der hoster min database og med uvicorn kan jeg se data i browser 
+      ved at skrive "http://x.x.x.x:8000/api/game"
+    - uvicorn kommando'er 
+        pip install fastapi uvicorn pyodbc
+        uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    - har haft nogle problemer få connecte frontend og backend. Med python scriptet kan jeg sagtens tilgå data'en via browser
+      på min laptop, men der er problemer med min backend server wrapper?
+      EDIT: DET FUCKIN VIRKERRRRR lets goooo.
+    - nu skal jeg bare ha tweaked hvordan den displayer min spil/kosol data på hjemmesiden og ha lavet en dedikeret webserver til den.
+
+dag 3, d. 10/06
+    - 
