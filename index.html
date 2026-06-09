@@ -106,12 +106,10 @@
                     .then(response => response.json())
                     .then(res => {
                         if (res.status === "SUCCESS" && res.data.length > 0) {
-                            // Updated line below: centers the search results header
+                            // centers search results header
                             let htmlContent = `<span class="status-text" style="display: block; text-align: center; width: 100%; margin-bottom: 20px;">--- SEARCH RESULTS ---</span>`;
                             
                             res.data.forEach(item => {
-                                // Prints out either: > [Game] Super Mario 64 [N64]
-                                // or:               > [Console] NES - Nintendo
                                 htmlContent += `<p style="text-align: left; margin-left: 10px;">> [${item.Type}] ${item.Name.trim()}</p>`;
                             });
                             
