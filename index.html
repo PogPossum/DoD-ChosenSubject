@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashii's Arcade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="left-column">
+            <div class="ascii-banner">
+               ___         __    _ _ _      
+              /   |  _____/ /_  (_|_| )_____
+             / /| | / ___/ __ \/ / /|// ___/
+            / ___ |(__  ) / / / / /  (__  ) 
+         __/_/  |_/____/_/ /_/_/_/  /____/  
+        /   |  ______________ _____/ /__    
+       / /| | / ___/ ___/ __ `/ __  / _ \   
+      / ___ |/ /  / /__/ /_/ / /_/ /  __/   
+     /_/  |_/_/   \___/\__,_/\__,_/\___/    
+                 <p>      "Making the future a little more 1998, 
+                           one byte at a time"</p>
+            </div>
+
+            <div class="terminal-box" style="margin-bottom: 20px;">
+                <div class="search-container">
+                    <p> SEARCH: <span class="cursor">|</span></p>
+                    <input type="text" id="searchInput" class="terminal-input">
+                </div>
+
+                <h2 class="underline">Catalogue:</h2>
+                <ul class="menu-list">
+                    <li><button class="menu-item" onclick="fetchData('game')">- GAMES</button></li>
+                    <li><button class="menu-item" onclick="fetchData('console')">- CONSOLES</button></li>
+                </ul>
+            </div>
+
+            <div class="terminal-box small-box">
+                <span style="color: #666;">SYS.STATUS: IDLE...</span>
+            </div>
+        </div>
+
+        <div class="right-column terminal-box output-box">
+            <div id="displayArea" style="width: 100%;">
+                <span class="status-text">OFFLINE:</span>
+            </div>
+        </div>
+
+        <div class="grain-overlay"></div>
+
+    </div>
+
+    <script>
+        const displayArea = document.getElementById('displayArea');
+        const searchInput = document.getElementById('searchInput');
+
+        const API_BASE_URL = "http://192.168.0.52:8000/api"; 
+
+        // 1.  Menu Taps (- GAME or - CONSOLE)
+        function fetchData(type) {
+            displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">QUERYING ${type.toUpperCase()}...</span>`;
+            
+            // Connects to http://<VM_IP>:8000/api/game or /api/console
+            fetch(`${API_BASE_URL}/${type}`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not OK");
+                    return response.json();
+                })
+                .then(res => {
+                    if (res.status === "SUCCESS" && res.data.length > 0) {
+                        // Clear the box and build a clean terminal list of items
+                        let htmlContent = `<span class="status-text" style="display: block; text-align: center; width: 100%; margin-bottom: 20px;">--- ${type.toUpperCase()} ARCHIVE ---</span>`;
+                        
+                        res.data.forEach(item => {
+                            if (type === 'game') {
+                                htmlContent += `<p style="text-align: left; margin-left: 10px;">> ${item.Title.trim()} (${item.Release}) [${item.ConsoleName.trim()}]</p>`;
+                            } else {
+                                htmlContent += `<p style="text-align: left; margin-left: 10px;">> ${item.Console.trim()} - ${item.Company.trim()}</p>`;
+                            }
+                        });
+                        
+                        displayArea.innerHTML = htmlContent;
+                    } else {
+                        displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">NO RECORDS FOUND.</span>`;
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    displayArea.innerHTML = `
+                        <span class="status-text" style="color: red; display: block; text-align: center;">CONNECTION ERROR:</span>
+                        <p style="margin-top:10px; text-align: center;">Could not connect to backend server wrapper.</p>
+                    `;
+                });
+        }
+
+        // 2. Handles typing in the SEARCH input box and pressing Enter
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && this.value.trim() !== "") {
+                const query = this.value.trim();
+                displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">SCANNING ARCHIVE FOR: "${query.toUpperCase()}"</span>`;
+                
+                fetch(`${API_BASE_URL}/search?q=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(res => {
+                        if (res.status === "SUCCESS" && res.data.length > 0) {
+                            // Updated line below: centers the search results header
+                            let htmlContent = `<span class="status-text" style="display: block; text-align: center; width: 100%; margin-bottom: 20px;">--- SEARCH RESULTS ---</span>`;
+                            
+                            res.data.forEach(item => {
+                                // Prints out either: > [Game] Super Mario 64 [N64]
+                                // or:               > [Console] NES - Nintendo
+                                htmlContent += `<p style="text-align: left; margin-left: 10px;">> [${item.Type}] ${item.Name.trim()}</p>`;
+                            });
+                            
+                            displayArea.innerHTML = htmlContent;
+                        } else {
+                            displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">NO MATCHES FOUND.</span>`;
+                        }
+                    })
+                    .catch(err => {
+                        displayArea.innerHTML = `<span class="status-text" style="color: red; display: block; text-align: center;">SEARCH FAILED.</span>`;
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

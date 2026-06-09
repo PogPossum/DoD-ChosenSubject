@@ -1,0 +1,173 @@
+/* Retro Terminal Setup */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --amber: #f3ae48;
+    --primary-color: #11121a;
+    --secondary-color: #2c2f30;
+    --white: #fff;
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--amber);
+    font-family: 'Courier Prime', monospace;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- main responsive container --- */
+.app-container {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* --- desktop layout  --- */
+@media (min-width: 768px) {
+    .app-container {
+        grid-template-columns: 400px 1fr;
+    }
+    .left-column {
+        grid-column: 1;
+    }
+    .right-column {
+        grid-column: 2;
+        grid-row: 1 / span 3; /* Stretches the output box next to all left elements */
+    }
+}
+
+/* --- elements & borders --- */
+.ascii-banner {
+    font-family: 'Share Tech Mono', monospace;
+    white-space: pre;
+    line-height: 1.1;
+    color: var(--amber);
+    font-size: 14px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+.terminal-box {
+    border: 4px solid var(--amber);
+    padding: 20px;
+    background-color: var(--primary-color);
+}
+
+.small-box {
+    height: 80px;
+}
+/* --- search bar styling --- */
+.search-container {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.search-label {
+    color: var(--amber);
+    margin-right: 5px;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--amber);
+    color: #ffffff;
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    outline: none;
+    width: 60%;
+    padding-left: 5px;
+}
+
+/* --- menu items --- */
+.menu-list {
+    list-style: none;
+}
+
+.menu-item {
+    color: var(--amber);
+    cursor: pointer;
+    padding: 5px 0;
+    display: block;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: left;
+    width: 100%;
+}
+
+.menu-item:hover, .menu-item:focus {
+    color: var(--secondary-color);
+    background-color: var(--amber);
+    padding-left: 10px;
+}
+
+/* --- right column output --- */
+.archive-header {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--amber);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.output-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 400px;
+    text-align: left;
+}
+.terminal-box {
+    border: 4px solid var(--amber);
+    padding: 25px; /* Boosted slightly from 20px for a clean terminal margin */
+    background-color: #1a1a1a;
+}
+
+.status-text {
+    color: var(--amber);
+    font-size: 1.5rem;
+}
+
+/* --- vibes ---*/
+
+.cursor{ 
+    font-weight: 700;
+    animation: 1s blink step-end infinite;
+}
+@keyframes blink{
+    from,
+    to{
+        color: transparent;
+    }
+    50%{
+        color: var(--accent-color);
+    }
+}
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('grain.gif');
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 9999;
+}
