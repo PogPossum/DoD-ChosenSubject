@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashii's Arcade</title>
+    <link rel="icon" href="webarcade/ardnscr-logo.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -57,7 +58,7 @@
         const displayArea = document.getElementById('displayArea');
         const searchInput = document.getElementById('searchInput');
 
-        const API_BASE_URL = "http://192.168.0.52:8000/api"; 
+        const API_BASE_URL = "/api"; 
 
         // 1.  Menu Taps (- GAME or - CONSOLE)
         function fetchData(type) {
