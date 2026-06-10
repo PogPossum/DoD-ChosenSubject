@@ -21,4 +21,7 @@ dag 2, d. 09/06
     - nu skal jeg bare ha tweaked hvordan den displayer min spil/kosol data på hjemmesiden og ha lavet en dedikeret webserver til den.
 
 dag 3, d. 10/06
-    - 
+    - regner med at hoste min webapp i en docker container. 
+    - har fået installeret docker på en ubuntu VM.
+    - jeg har fået nginx op og køre i en container, brugt docker compose, og har fået html og css fil over på nginx
+      så nu kan jeg tilgå min webapp via ip på webserveren
