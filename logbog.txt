@@ -3,26 +3,33 @@
 ------------ ------------
 
 dag 1, d. 08/06 
-    - I dag har været brug på ide udvikling og jeg har leget med den visuelle del af min front end
-      med HTML og CSS.
+  - I dag har været brug på ide udvikling og jeg har leget med den visuelle del af min front end
+    med HTML og CSS.
 
 dag 2, d. 09/06
-    - Købt cloudflare domæne. regner med at bruge et subdomæne til mit DoD projekt.
-        ashiisarcade.ardenscor.com
-    - behøede ikke at åbne port 1433 i firewall på database VM, da de allerede er åbne pga konsol applikation 
-    - har et python api script til at køre på VM'en der hoster min database og med uvicorn kan jeg se data i browser 
-      ved at skrive "http://x.x.x.x:8000/api/game"
-    - uvicorn kommando'er 
-        pip install fastapi uvicorn pyodbc
-        uvicorn main:app --reload --host 0.0.0.0 --port 8000
-    - har haft nogle problemer få connecte frontend og backend. Med python scriptet kan jeg sagtens tilgå data'en via browser
-      på min laptop, men der er problemer med min backend server wrapper?
-      EDIT: DET FUCKIN VIRKERRRRR lets goooo.
-    - nu skal jeg bare ha tweaked hvordan den displayer min spil/kosol data på hjemmesiden og ha lavet en dedikeret webserver til den.
+  - Købt cloudflare domæne. regner med at bruge et subdomæne til mit DoD projekt.
+      ashiisarcade.ardenscor.com
+  - behøede ikke at åbne port 1433 i firewall på database VM, da de allerede er åbne pga konsol applikation 
+  - har et python api script til at køre på VM'en der hoster min database og med uvicorn kan jeg se data i browser 
+    ved at skrive "http://x.x.x.x:8000/api/game"
+  - uvicorn kommando'er 
+      pip install fastapi uvicorn pyodbc
+      uvicorn main:app --reload --host 0.0.0.0 --port 8000
+  - har haft nogle problemer få connecte frontend og backend. Med python scriptet kan jeg sagtens tilgå data'en via browser
+    på min laptop, men der er problemer med min backend server wrapper?
+    EDIT: DET FUCKIN VIRKERRRRR lets goooo.
+  - nu skal jeg bare ha tweaked hvordan den displayer min spil/kosol data på hjemmesiden og ha lavet en dedikeret webserver til den.
 
 dag 3, d. 10/06
-    - regner med at hoste min webapp i en docker container. 
-    - har fået installeret docker på en ubuntu VM.
-    - jeg har fået nginx op og køre i en container, brugt docker compose, og har fået html og css fil over på nginx
-      så nu kan jeg tilgå min webapp via ip på webserveren.
-    - bonus: det virker på mobil osse
+  - regner med at hoste min webapp i en docker container. 
+  - har fået installeret docker på en ubuntu VM.
+  - jeg har fået nginx op og køre i en container, brugt docker compose, og har fået html og css fil over på nginx
+    så nu kan jeg tilgå min webapp via ip på webserveren.
+  - bonus: det virker på mobil osse.
+
+dag 4, d. 11/06
+  - Jeg har fået nogen lunde styr på cloudflare og hvordan man sætter en tunnel op, og jeg faktisk fået deployet min webapp.
+  - Jeg har dog ikke fået lavet en HTTP HTTPS redirect endnu.
+
+dag 5, d. 12/06
+  -
