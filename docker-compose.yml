@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  arcade-web:
+    image: nginx:latest
+    container_name: arcade-web
+    ports:
+      - "80:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./style.css:/usr/share/nginx/html/style.css
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - arcade-net
+    restart: unless-stopped
+
+  arcade-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: arcade-tunnel
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=TokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenToken>
+    networks:
+      - arcade-net
+    restart: unless-stopped
+
+networks:
+  arcade-net:
+    driver: bridge
