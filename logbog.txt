@@ -29,7 +29,7 @@ dag 3, d. 10/06
 
 dag 4, d. 11/06
   - Jeg har fået nogen lunde styr på cloudflare og hvordan man sætter en tunnel op, og jeg faktisk fået deployet min webapp.
-  - Jeg har dog ikke fået lavet en HTTP HTTPS redirect endnu.
+  - Jeg har sat cloudflare til altid at bruge HTTPS.
 
 dag 5, d. 12/06
   -
