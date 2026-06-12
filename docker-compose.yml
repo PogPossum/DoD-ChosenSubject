@@ -7,8 +7,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./index.html:/usr/share/nginx/html/index.html
-      - ./style.css:/usr/share/nginx/html/style.css
+      - ./:/usr/share/nginx/html/ #icon and grain fix
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - arcade-net
@@ -19,7 +18,7 @@ services:
     container_name: arcade-tunnel
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=TokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenToken>
+      - TUNNEL_TOKEN=eyJhIjoiMjhiZDZhYjk3ZDdmYzFkMzUwNjYzMGVlZWQwODA3ODkiLCJ0IjoiNWQyMDhlOTAtYzJlNS00YzUyLTk0YTQtZjU0NjNkMTRmNzc3IiwicyI6>
     networks:
       - arcade-net
     restart: unless-stopped
