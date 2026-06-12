@@ -3,3 +3,11 @@
 <h3>Goals</h3>
 <p>- I can browse my collection and search for specific games/consoles, <i>kinda something like Bilbasen</i>.</p>
 <p>- I want the webapp to have the visuals of a classic termminal, to really add to the retro vibes.</p>
+<h3>Features</h3>
+<p>- automatically secured over https via cloudflare.
+- webserver managed in a docker container.
+- routed through docker internal networking.
+- organized dynamically by console IDs.
+- sorted alphabetically in Games drop-down menus.
+- keeping the classic abmer terminal vibe.
+</p>
