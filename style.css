@@ -43,7 +43,7 @@ body {
     }
     .right-column {
         grid-column: 2;
-        grid-row: 1 / span 3; /* Stretches the output box next to all left elements */
+        grid-row: 1 / span 3; 
     }
 }
 
@@ -135,13 +135,57 @@ body {
 }
 .terminal-box {
     border: 4px solid var(--amber);
-    padding: 25px; /* Boosted slightly from 20px for a clean terminal margin */
+    padding: 25px; 
     background-color: #1a1a1a;
 }
 
 .status-text {
     color: var(--amber);
     font-size: 1.5rem;
+}
+
+/* --- drop down menus --- */
+/* -- console grouping -- */
+.console-accordion {
+    margin-bottom: 10px;
+    border: 1px solid var(--terminal-color);
+}
+
+/* --- Clickable console button header --- */
+.accordion-header {
+    width: 100%;
+    background: transparent;
+    color: var(--terminal-color);
+    border: none;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.accordion-header:hover, .accordion-header.active {
+    background: rgba(255, 166, 0, 0.429); 
+}
+
+.accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* --- games dropdowns --- */
+.game-row {
+    padding: 8px 20px;
+    border-top: 1px dashed var(--amber);
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
 }
 
 /* --- vibes ---*/
@@ -165,7 +209,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('grain.gif');
+  background: url('/grain.gif');
   opacity: 0.25;
   mix-blend-mode: overlay;
   pointer-events: none;
