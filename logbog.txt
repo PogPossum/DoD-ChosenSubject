@@ -1,7 +1,7 @@
 ------------ ------------
       -- logbog --
 ------------ ------------
-
+-- uge 24 --
 dag 1, d. 08/06 
   - I dag har været brug på ide udvikling og jeg har leget med den visuelle del af min front end
     med HTML og CSS.
@@ -36,5 +36,6 @@ dag 5, d. 12/06
     er opdelt efter hvilken consol de tilhøre, frem for at de alle bliver vist i en lang smørre ingen gider at læse.
   - Jeg har fået både website logo og crt grain effect på website.
 
+-- uge 25 --
 dag 6, d. 15/06
   - 
