@@ -3,7 +3,7 @@
 <h3>Goals</h3>
 <p>- I can browse my collection and search for specific games/consoles, <i>kinda something like Bilbasen</i>.</p>
 <p>- I want the webapp to have the visuals of a classic termminal, to really add to the retro vibes.</p>
-<h3>Features</h3>
+<h3>Current Project Milsestone</h3>
 <p>- automatically secured over https via cloudflare.</p>
 <p>- webserver managed in a docker container.</p>
 <p>- routed through docker internal networking.</p>
