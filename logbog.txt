@@ -35,6 +35,7 @@ dag 5, d. 12/06
   - I dag har jeg arbejdet på at gøre min webapp mere brugervenlig, så fået tilføjet dropdown menu'er i mit Games archive, så de
     er opdelt efter hvilken consol de tilhøre, frem for at de alle bliver vist i en lang smørre ingen gider at læse.
   - Jeg har fået både website logo og crt grain effect på website.
+    - problemet var at min nginx ikke kunne se logo og grain gif i mappen, så de skulle re-mountes i yml filen.
 
 -- uge 25 --
 dag 6, d. 15/06
