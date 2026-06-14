@@ -37,6 +37,11 @@ dag 5, d. 12/06
   - Jeg har fået både website logo og crt grain effect på website.
     - problemet var at min nginx ikke kunne se logo og grain gif i mappen, så de skulle re-mountes i yml filen.
 
+-- weekend uge 24--
+d. 14/06
+  - efter jeg fik udgivet min arcade webapp med cloudflare, valgte jeg osse at hoste min allerede lavede "resume" hjemmeside.
+  - jeg fandt ud af at når man køre flere webservere i docker, behøver jeg kun en cloudflare tunnel for at kunne deploye subdomains.  
+
 -- uge 25 --
 dag 6, d. 15/06
   - 
