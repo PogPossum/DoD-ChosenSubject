@@ -36,7 +36,7 @@ services:
     container_name: arcade-tunnel
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=eyJhIjoiMjhiZDZhYjk3ZDdmYzFkMzUwNjYzMGVlZWQwODA3ODkiLCJ0IjoiNWQyMDhlOTAtYzJlNS00YzUyLTk0YTQtZjU0NjNkMTRmNzc3IiwicyI6>
+      - TUNNEL_TOKEN=TokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenToken
     networks:
       - web-net
     restart: unless-stopped
