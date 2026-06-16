@@ -49,4 +49,9 @@ dag 6, d. 15/06
   - jeg har fået lavet horror databasen, og fået skrevet nogle query-søge funktioner.
 
 dag 7, d. 16/06
+  - jeg har sat html og css op til min horror webapp.
+  - jeg prøver at undersøge at sætte noget backend op til den, jeg har lagt min horror database på samme VM som min arcade database,
+    så jeg tænker mit backend not bliver noget js plus det løse.
+
+dag 8, d. 17/06
   - 
