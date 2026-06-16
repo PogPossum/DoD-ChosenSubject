@@ -7,22 +7,40 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./:/usr/share/nginx/html/ #icon and grain fix
+      - ./arcade-frontend:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
-      - arcade-net
+      - web-net
     restart: unless-stopped
+
+  resume-web:
+      image: nginx:latest
+      container_name: resume-web
+      volumes:
+        - ./resume-site:/usr/share/nginx/html
+      networks:
+        - web-net
+      restart: unless-stopped
+
+  horror-web:
+      image: nginx:latest
+      container_name: horror-web
+      volumes:
+        - ./horror-site:/usr/share/nginx/html
+      networks:
+        - web-net
+      restart: unless-stopped  
 
   arcade-tunnel:
     image: cloudflare/cloudflared:latest
     container_name: arcade-tunnel
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=TokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenTokenToken
+      - TUNNEL_TOKEN=eyJhIjoiMjhiZDZhYjk3ZDdmYzFkMzUwNjYzMGVlZWQwODA3ODkiLCJ0IjoiNWQyMDhlOTAtYzJlNS00YzUyLTk0YTQtZjU0NjNkMTRmNzc3IiwicyI6>
     networks:
-      - arcade-net
+      - web-net
     restart: unless-stopped
 
 networks:
-  arcade-net:
+  web-net:
     driver: bridge
