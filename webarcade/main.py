@@ -16,9 +16,9 @@ app.add_middleware(
 # Microsoft SQL Server Connection Configuration
 CONNECTION_STRING = (
     "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=192.168.0.52;" 
+    "SERVER=192.168.x.x;" 
     "DATABASE=ArcadeBlockade;"
-    "UID=sa;"
+    "UID=user;"
     "PWD=Password1;"
     "TrustServerCertificate=yes;"
     "Encrypt=no;" 
@@ -73,9 +73,6 @@ def search_arcade(q: str = ""):
         
     conn, cursor = get_db_cursor()
     
-    # Updated: The game query now looks at BOTH G.Title and C.Console.
-    # We also tweak the SortYear slightly: if a game matches via a console search, 
-    # it still preserves its release year so your chronological sorting stays perfect!
     query = """
         SELECT (G.Title + ' (' + CAST(G.Release AS VARCHAR(4)) + ') [' + TRIM(C.Console) + ']') AS Name, 
                'Game' AS Type, 
@@ -96,7 +93,6 @@ def search_arcade(q: str = ""):
     """
     search_term = f"%{q}%"
     
-    # We now pass the search_term 3 times because we have 3 '?' placeholders in our SQL statement
     cursor.execute(query, (search_term, search_term, search_term))
     
     columns = [column[0] for column in cursor.description]
