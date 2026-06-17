@@ -56,4 +56,9 @@ dag 7, d. 16/06
     de ligger i hver deres mappe på C drevet og køre i seperate admin powershells
 
 dag 8, d. 17/06
+  - jeg har ændret navn på alle filmplakater til at match Movies.MovieID, så jeg kan matche plakater til film på min horror webapp,
+    og fået overført .jpg filerne til min docker VM.
+  - jeg har prøvet at undersøge hvordan jeg kan få min webapp til at vise billder for hver database entry.
+
+dag 9, d. 18/06
   - 
