@@ -7,7 +7,7 @@
     <link rel="icon" href="/ardnscr-logo.ico">
     <link rel="stylesheet" href="style.css?v=7">
 </head>
-<body>
+
 
     <div class="app-container">
         
@@ -53,101 +53,168 @@
         <div class="grain-overlay"></div>
 
     </div>
-
     <script>
-        const displayArea = document.getElementById('displayArea');
-        const searchInput = document.getElementById('searchInput');
+            const displayArea = document.getElementById('displayArea');
+            const searchInput = document.getElementById('searchInput');
 
-        const API_BASE_URL = "/api"; 
+            const API_BASE_URL = "/api"; 
 
-        // 1. menu options (- GAME or - CONSOLE)
-        function fetchData(type) {
-            displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">QUERYING ${type.toUpperCase()}...</span>`;
-            
-            fetch(`${API_BASE_URL}/${type}`)
-                .then(response => {
-                    if (!response.ok) throw new Error("Network response was not OK");
-                    return response.json();
-                })
-                .then(res => {
-                    if (res.status === "SUCCESS" && res.data.length > 0) {
-                        if (type === 'game') {
-                            displayGamesByConsole(res.data);
-                        } else if (type === 'console') {
-                            displayConsolesByCompany(res.data);
-                        }
-                    } else {
-                        displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">NO RECORDS FOUND.</span>`;
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    displayArea.innerHTML = `
-                        <span class="status-text" style="color: red; display: block; text-align: center;">CONNECTION ERROR:</span>
-                        <p style="margin-top:10px; text-align: center;">Could not connect to backend server wrapper.</p>
-                    `;
-                });
-        }
-
-        // 2. handles typing in the search bar
-        searchInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter' && this.value.trim() !== "") {
-                const query = this.value.trim();
-                displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">SCANNING ARCHIVE FOR: "${query.toUpperCase()}"</span>`;
+            // 1. menu options (- GAME or - CONSOLE)
+            function fetchData(type) {
+                displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">QUERYING ${type.toUpperCase()}...</span>`;
                 
-                fetch(`${API_BASE_URL}/search?q=${encodeURIComponent(query)}`)
-                    .then(response => response.json())
+                fetch(`${API_BASE_URL}/${type}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Network response was not OK");
+                        return response.json();
+                    })
                     .then(res => {
                         if (res.status === "SUCCESS" && res.data.length > 0) {
-                            let htmlContent = `<span class="status-text" style="display: block; text-align: center; width: 100%; margin-bottom: 20px;">--- SEARCH RESULTS ---</span>`;
-                            
-                            res.data.forEach(item => {
-                                htmlContent += `<p style="text-align: left; margin-left: 10px;">> [${item.Type}] ${item.Name.trim()}</p>`;
-                            });
-                            
-                            displayArea.innerHTML = htmlContent;
+                            if (type === 'game') {
+                                displayGamesByConsole(res.data);
+                            } else if (type === 'console') {
+                                displayConsolesByCompany(res.data);
+                            }
                         } else {
-                            displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">NO MATCHES FOUND.</span>`;
+                            displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">NO RECORDS FOUND.</span>`;
                         }
                     })
                     .catch(err => {
-                        displayArea.innerHTML = `<span class="status-text" style="color: red; display: block; text-align: center;">SEARCH FAILED.</span>`;
+                        console.error(err);
+                        displayArea.innerHTML = `
+                            <span class="status-text" style="color: red; display: block; text-align: center;">CONNECTION ERROR:</span>
+                            <p style="margin-top:10px; text-align: center;">Could not connect to backend server wrapper.</p>
+                        `;
                     });
             }
-        });
 
-        // 3. game accordion (dropdown menus) - grouped by ConID, listed alphabetically
-        function displayGamesByConsole(gamesArray) {
-            displayArea.innerHTML = ''; 
-
-            const titleHeader = document.createElement('span');
-            titleHeader.className = 'status-text';
-            titleHeader.style.cssText = "display: block; text-align: center; width: 100%; margin-bottom: 20px;";
-            titleHeader.textContent = "--- GAME ARCHIVE ---";
-            displayArea.appendChild(titleHeader);
-
-            const groupedByConsole = {};
-            gamesArray.forEach(game => {
-                const consoleName = game.ConsoleName ? game.ConsoleName.trim() : 'Unknown Console'; 
-                if (!groupedByConsole[consoleName]) {
-                    groupedByConsole[consoleName] = [];
+            // 2. handles typing in the search bar
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter' && this.value.trim() !== "") {
+                    const query = this.value.trim();
+                    displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">SCANNING ARCHIVE FOR: "${query.toUpperCase()}"</span>`;
+                    
+                    fetch(`${API_BASE_URL}/search?q=${encodeURIComponent(query)}`)
+                        .then(response => response.json())
+                        .then(res => {
+                            if (res.status === "SUCCESS" && res.data.length > 0) {
+                                let htmlContent = `<span class="status-text" style="display: block; text-align: center; width: 100%; margin-bottom: 20px;">--- SEARCH RESULTS ---</span>`;
+                                
+                                res.data.forEach(item => {
+                                    htmlContent += `<p style="text-align: left; margin-left: 10px;">> [${item.Type}] ${item.Name.trim()}</p>`;
+                                });
+                                
+                                displayArea.innerHTML = htmlContent;
+                            } else {
+                                displayArea.innerHTML = `<span class="status-text" style="display: block; text-align: center;">NO MATCHES FOUND.</span>`;
+                            }
+                        })
+                        .catch(err => {
+                            displayArea.innerHTML = `<span class="status-text" style="color: red; display: block; text-align: center;">SEARCH FAILED.</span>`;
+                        });
                 }
-                groupedByConsole[consoleName].push(game);
             });
 
-            Object.keys(groupedByConsole)
-                .sort((a, b) => {
-                    const idA = groupedByConsole[a][0].ConID || 999;
-                    const idB = groupedByConsole[b][0].ConID || 999;
-                    return idA - idB; 
-                })
-                .forEach(consoleName => {
-                    const consoleGames = groupedByConsole[consoleName];
+                // 3. game accordion (dropdown menus) - grouped by Console, listed chronologically by console release year
+                function displayGamesByConsole(gamesArray) {
+                displayArea.innerHTML = ''; 
 
-                    consoleGames.sort((a, b) => {
-                        const titleA = (a.Title || '').trim().toUpperCase();
-                        const titleB = (b.Title || '').trim().toUpperCase();
-                        return titleA.localeCompare(titleB);
+                const titleHeader = document.createElement('span');
+                titleHeader.className = 'status-text';
+                titleHeader.style.cssText = "display: block; text-align: center; width: 100%; margin-bottom: 20px;";
+                titleHeader.textContent = "--- GAME ARCHIVE ---";
+                displayArea.appendChild(titleHeader);
+
+                const groupedByConsole = {};
+                gamesArray.forEach(game => {
+                    const consoleName = game.ConsoleName ? game.ConsoleName.trim() : 'Unknown Console'; 
+                    if (!groupedByConsole[consoleName]) {
+                        groupedByConsole[consoleName] = [];
+                    }
+                    groupedByConsole[consoleName].push(game);
+                });
+
+                Object.keys(groupedByConsole)
+                    .sort((a, b) => {
+                        const idA = groupedByConsole[a][0].ConID || 999;
+                        const idB = groupedByConsole[b][0].ConID || 999;
+                        return idA - idB; 
+                    })
+                    .forEach(consoleName => {
+                        const consoleGames = groupedByConsole[consoleName];
+
+                        consoleGames.sort((a, b) => {
+                            const titleA = (a.Title || '').trim().toUpperCase();
+                            const titleB = (b.Title || '').trim().toUpperCase();
+                            return titleA.localeCompare(titleB);
+                        });
+
+                        const accordionItem = document.createElement('div');
+                        accordionItem.className = 'console-accordion';
+
+                        const header = document.createElement('button');
+                        header.className = 'accordion-header';
+                        header.innerHTML = `<span>> ${consoleName.toUpperCase()}</span> <span class="icon">[+]</span>`;
+
+                        const panel = document.createElement('div');
+                        panel.className = 'accordion-panel';
+
+                        consoleGames.forEach(game => {
+                            const gameRow = document.createElement('div');
+                            gameRow.className = 'game-row';
+                            gameRow.innerHTML = `
+                                <span class="game-title">> ${game.Title.trim()}</span>
+                                <span class="game-year">(${game.Release})</span>
+                            `;
+                            panel.appendChild(gameRow);
+                        });
+
+                        header.addEventListener('click', function() {
+                            this.classList.toggle('active');
+                            const icon = this.querySelector('.icon');
+                            if (panel.style.maxHeight) {
+                                panel.style.maxHeight = null;
+                                icon.textContent = '[+]';
+                            } else {
+                                panel.style.maxHeight = panel.scrollHeight + "px"; 
+                                icon.textContent = '[-]';
+                            }
+                        });
+
+                        accordionItem.appendChild(header);
+                        accordionItem.appendChild(panel);
+                        displayArea.appendChild(accordionItem);
+                    });
+            }
+
+            // 4. console accordion - grouped by Company, listed chronologically by release year
+            function displayConsolesByCompany(consolesArray) {
+                displayArea.innerHTML = ''; 
+
+                const titleHeader = document.createElement('span');
+                titleHeader.className = 'status-text';
+                titleHeader.style.cssText = "display: block; text-align: center; width: 100%; margin-bottom: 20px;";
+                titleHeader.textContent = "--- CONSOLE ARCHIVE ---";
+                displayArea.appendChild(titleHeader);
+
+                const groupedByCompany = {};
+                consolesArray.forEach(item => {
+                    const companyName = item.Company ? item.Company.trim() : 'UNKNOWN MANUFACTURER';
+                    if (!groupedByCompany[companyName]) {
+                        groupedByCompany[companyName] = [];
+                    }
+                    groupedByCompany[companyName].push(item);
+                });
+
+                // Sort manufacturer headers alphabetically (Atari, Commodore, Microsoft, Nintendo...)
+                Object.keys(groupedByCompany).sort().forEach(companyName => {
+                    const companyConsoles = groupedByCompany[companyName];
+
+                    // Sort consoles within each company chronologically by their release year
+                    companyConsoles.sort((a, b) => {
+                        const yearA = a.Release || 9999;
+                        const yearB = b.Release || 9999;
+                        return yearA - yearB; 
                     });
 
                     const accordionItem = document.createElement('div');
@@ -155,19 +222,19 @@
 
                     const header = document.createElement('button');
                     header.className = 'accordion-header';
-                    header.innerHTML = `<span>> ${consoleName.toUpperCase()}</span> <span class="icon">[+]</span>`;
+                    header.innerHTML = `<span>> ${companyName.toUpperCase()}</span> <span class="icon">[+]</span>`;
 
                     const panel = document.createElement('div');
                     panel.className = 'accordion-panel';
 
-                    consoleGames.forEach(game => {
-                        const gameRow = document.createElement('div');
-                        gameRow.className = 'game-row';
-                        gameRow.innerHTML = `
-                            <span class="game-title">> ${game.Title.trim()}</span>
-                            <span class="game-year">(${game.Release})</span>
+                    companyConsoles.forEach(item => {
+                        const consoleRow = document.createElement('div');
+                        consoleRow.className = 'game-row'; 
+                        consoleRow.innerHTML = `
+                            <span class="game-title">> ${item.Console.trim()}</span>
+                            <span class="game-year" style="color: rgba(255, 165, 0, 0.5);">(${item.Release || ''})</span>
                         `;
-                        panel.appendChild(gameRow);
+                        panel.appendChild(consoleRow);
                     });
 
                     header.addEventListener('click', function() {
@@ -186,73 +253,7 @@
                     accordionItem.appendChild(panel);
                     displayArea.appendChild(accordionItem);
                 });
-        }
-
-        // 4. console accordion - grouped by Company, listed by ConID 
-        function displayConsolesByCompany(consolesArray) {
-            displayArea.innerHTML = ''; 
-
-            const titleHeader = document.createElement('span');
-            titleHeader.className = 'status-text';
-            titleHeader.style.cssText = "display: block; text-align: center; width: 100%; margin-bottom: 20px;";
-            titleHeader.textContent = "--- CONSOLE ARCHIVE ---";
-            displayArea.appendChild(titleHeader);
-
-            const groupedByCompany = {};
-            consolesArray.forEach(item => {
-                const companyName = item.Company ? item.Company.trim() : 'UNKNOWN MANUFACTURER';
-                if (!groupedByCompany[companyName]) {
-                    groupedByCompany[companyName] = [];
-                }
-                groupedByCompany[companyName].push(item);
-            });
-
-            Object.keys(groupedByCompany).sort().forEach(companyName => {
-                const companyConsoles = groupedByCompany[companyName];
-
-                companyConsoles.sort((a, b) => {
-                    const idA = a.ConID || 999;
-                    const idB = b.ConID || 999;
-                    return idA - idB; 
-                });
-
-                const accordionItem = document.createElement('div');
-                accordionItem.className = 'console-accordion';
-
-                const header = document.createElement('button');
-                header.className = 'accordion-header';
-                header.innerHTML = `<span>> ${companyName.toUpperCase()}</span> <span class="icon">[+]</span>`;
-
-                const panel = document.createElement('div');
-                panel.className = 'accordion-panel';
-
-                companyConsoles.forEach(item => {
-                    const consoleRow = document.createElement('div');
-                    consoleRow.className = 'game-row'; 
-                    consoleRow.innerHTML = `
-                        <span class="game-title">> ${item.Console.trim()}</span>
-                        <span class="game-year" style="color: rgba(255, 165, 0, 0.5);">(ID: ${item.ConID || ''})</span>
-                    `;
-                    panel.appendChild(consoleRow);
-                });
-
-                header.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const icon = this.querySelector('.icon');
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                        icon.textContent = '[+]';
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px"; 
-                        icon.textContent = '[-]';
-                    }
-                });
-
-                accordionItem.appendChild(header);
-                accordionItem.appendChild(panel);
-                displayArea.appendChild(accordionItem);
-            });
-        }
+            }
     </script>
 </body>
 </html>
