@@ -61,4 +61,17 @@ dag 8, d. 17/06
   - jeg har prøvet at undersøge hvordan jeg kan få min webapp til at vise billder for hver database entry.
 
 dag 9, d. 18/06
+  - jeg sad i går aftes og fik billeder til at linke via MovieID.
+  - I dag har jeg arbejdet på at lave lave QOL på min horror hjemmeside, så nu laver den en "return to main" når man klikker titel texten i toppen,
+    og jeg har arbejdet på at lave dropdown menu'er til "Genres", "Monsters" og "Directors", så man kan sortere ud fra de 3 variabler.
+  - lavet en QOL ændring på min arcade webapp, hvor at den nu viser mine konsoller ud fra release år.
+
+dag 10, d.19/06
+  - AFK
+
+-- weekend uge 25--
+dag 11, d. 22/06
+  - AFK 
+
+dag 12, d. 23/06
   - 
