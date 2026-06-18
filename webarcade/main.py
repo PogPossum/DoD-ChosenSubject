@@ -16,9 +16,9 @@ app.add_middleware(
 # Microsoft SQL Server Connection Configuration
 CONNECTION_STRING = (
     "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=192.168.x.x;" 
+    "SERVER=192.168.0.52;" 
     "DATABASE=ArcadeBlockade;"
-    "UID=user;"
+    "UID=sa;"
     "PWD=Password1;"
     "TrustServerCertificate=yes;"
     "Encrypt=no;" 
@@ -57,7 +57,8 @@ def get_all_games():
 def get_all_consoles():
     conn, cursor = get_db_cursor()
     
-    cursor.execute("SELECT ConID, Console, Company FROM Console")
+    # ADDED: Release column to the SELECT query
+    cursor.execute("SELECT ConID, Console, Company, Release FROM Console")
     
     columns = [column[0] for column in cursor.description]
     results = [dict(zip(columns, row)) for row in cursor.fetchall()]
@@ -73,6 +74,7 @@ def search_arcade(q: str = ""):
         
     conn, cursor = get_db_cursor()
     
+    # UPDATED: Replaced the fallback 9999 with the real C.Release year for console search rows
     query = """
         SELECT (G.Title + ' (' + CAST(G.Release AS VARCHAR(4)) + ') [' + TRIM(C.Console) + ']') AS Name, 
                'Game' AS Type, 
@@ -83,9 +85,9 @@ def search_arcade(q: str = ""):
         
         UNION ALL
         
-        SELECT (Console + ' - ' + Company) AS Name, 
+        SELECT (Console + ' - ' + Company + ' (' + CAST(Release AS VARCHAR(4)) + ')') AS Name, 
                'Console' AS Type, 
-               9999 AS SortYear
+               Release AS SortYear
         FROM Console 
         WHERE Console LIKE ?
         
