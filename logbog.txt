@@ -75,6 +75,8 @@ dag 11, d. 22/06
 
 dag 12, d. 23/06
   - var til lektionen, men prøvede desparat at komme hjem fra sjælland.
+  - prøvede at få mine dropdown menuer til at virke med endte med at fjerne dem da de skabte flere problemer
+    end de var værd.
 
 dag 13, d. 24/06
   - har fået lagt projekt 2, horror-web, i github repo.
