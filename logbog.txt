@@ -29,6 +29,7 @@ dag 3, d. 10/06
 
 dag 4, d. 11/06
   - Jeg har fået nogen lunde styr på cloudflare og hvordan man sætter en tunnel op, og jeg faktisk fået deployet min webapp.
+      https://ashiisarcade.ardenscor.com/
   - Jeg har sat cloudflare til altid at bruge HTTPS.
 
 dag 5, d. 12/06
@@ -47,6 +48,8 @@ dag 6, d. 15/06
   - har leget med docker, fået booted endnu en container, som jeg lidt tænker skal hoste en webapp lidt ala min arcade, 
     bare til vores gyserfilms samling.
   - jeg har fået lavet horror databasen, og fået skrevet nogle query-søge funktioner.
+  - jeg har for sjovs skyld osse valgt at hoste min CV/portfolio hjemmeside selv, I stedet for at hoste den via GitHub Pages.
+      https://portfolio.ardenscor.com/
 
 dag 7, d. 16/06
   - jeg har sat html og css op til min horror webapp.
@@ -61,7 +64,8 @@ dag 8, d. 17/06
   - jeg har ændret navn på alle filmplakater til at match Movies.MovieID, så jeg kan matche plakater til film på min horror webapp,
     og fået overført .jpg filerne til min docker VM.
   - jeg har prøvet at undersøge hvordan jeg kan få min webapp til at vise billder for hver database entry.
-  - spookshack.ardenscor.com
+  - jeg har deployet min horror movie webapp
+      https://spookshack.ardenscor.com/
 
 dag 9, d. 18/06
   - jeg sad i går aftes og fik billeder til at linke via MovieID.
