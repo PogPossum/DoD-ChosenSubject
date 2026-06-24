@@ -77,4 +77,5 @@ dag 12, d. 23/06
   - 
 
 dag 13, d. 24/06
+  - har fået lagt projekt 2, horror-web, i github repo.
   - klargøring af presentation.
