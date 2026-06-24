@@ -75,3 +75,6 @@ dag 11, d. 22/06
 
 dag 12, d. 23/06
   - 
+
+dag 13, d. 24/06
+  - klargøring af presentation.
