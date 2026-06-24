@@ -3,14 +3,14 @@
 <h3>Goals</h3>
 <p>- I can browse my collection and search for specific games/consoles, <i>kinda something like Bilbasen</i>.</p>
 <p>- I want the webapp to have the visuals of a classic termminal, to really add to the retro vibes.</p>
-<h3>Current Project Milsestone</h3>
+<h3> -- Current Project Milsestone -- </h3>
 <p>- automatically secured over https via cloudflare.</p>
 <p>- webserver managed in a docker container.</p>
 <p>- routed through docker internal networking.</p>
 <p>- organized dynamically by console IDs.</p>
 <p>- sorted alphabetically in Games drop-down menus.</p>
 <p>- keeping the classic abmer terminal vibe.</p>
-<h3>Extras</h3>
+<h3> -- Extras -- </h3>
 <p>I ended up deploying two over projects during this extracurricular, here are all the links;</p>
 <p>https://ashiisarcade.ardenscor.com/</p>
 <p>https://spookshack.ardenscor.com/</p>
