@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpookShack Videos</title>
+    <link rel="icon" href="/ardnscr-logo.ico">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container"> 
+        <a href="#" onclick="resetView(); return false;" class="header-link">
+            <h1 class="neonText">SpookShack </h1>
+            <h1 class="neonText">Videos</h1>
+        </a>
+    </div>
+
+    <main>
+    <nav id="SiteNav">
+        <ul class="main-nav">
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Genres</a>
+                <ul class="dropdown-content" id="genre-dropdown">
+                    <li><a href="#">Searching horror relics...</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Monsters</a>
+                <ul class="dropdown-content" id="monster-dropdown">
+                    <li><a href="#">Searching horror relics...</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Directors</a>
+                <ul class="dropdown-content" id="monster-dropdown">
+                    <li><a href="#">Searching horror relics...</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+        <h2>You want horror? We got horror.</h2>
+        
+        <div class="search-container">
+            <input type="text" id="movieSearch" placeholder="Search..." oninput="handleSearch()">
+            <button id="clearBtn" onclick="resetView()" style="display:none;">Show All Movies</button>
+        </div>
+
+        <div id="movieDisplay">
+            <p class="loading">Searching horror relics...</p>
+        </div>
+    </main>
+
+    <script>
+        let allMovies = []; // Global store for our original database data
+
+        // 1. Fetch movies when the page loads
+        async function fetchMovies() {
+            try {
+                const response = await fetch('/api/movies');
+                const result = await response.json();
+                
+                if (result.status === "SUCCESS") {
+                    allMovies = result.data.sort((a, b) => a.title.localeCompare(b.title));
+                    
+                    // Build our dynamic nested dropdown menus immediately!
+                    populateDropdownMenu('genrename', 'genre-dropdown');
+                    populateDropdownMenu('moviemonster', 'monster-dropdown');
+                    populateDropdownMenu('director', 'director-dropdown');
+                    
+                    displayStandardGrid(allMovies);
+                } else {
+                    document.getElementById('movieDisplay').innerHTML = `<p style="color:var(--accent--color)">Error loading collection.</p>`;
+                }
+            } catch (error) {
+                console.error("Failed to fetch movies:", error);
+                document.getElementById('movieDisplay').innerHTML = `<p style="color:var(--accent--color)">Could not connect to backend.</p>`;
+            }
+        }
+
+        // 2. Render Standard Main Grid View
+        function displayStandardGrid(moviesList) {
+            const display = document.getElementById('movieDisplay');
+            if (moviesList.length === 0) {
+                display.innerHTML = `<p>No matching horror relics found.</p>`;
+                return;
+            }
+
+            let html = '<div class="movie-grid">';
+            moviesList.forEach(movie => {
+                html += `
+                    <div class="movie-card">
+                        <div class="poster-wrapper">
+                            <img src="posters/${movie.movieid}.jpg" onerror="this.src='posters/vhs-placeholder.jpg';" alt="${movie.title} Poster" class="movie-poster">
+                        </div>
+                        <div class="movie-info">
+                            <h3>${movie.title}</h3>
+                            <div class="movie-details">
+                                <p><strong>Released:</strong> ${movie.release}</p>
+                                <p><strong>Director:</strong> ${movie.director}</p>
+                                <p><strong>Genre:</strong> ${movie.genrename}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            display.innerHTML = html;
+        }
+
+        // 3. Search Filter Logic
+        function handleSearch() {
+            const searchVal = document.getElementById('movieSearch').value.toLowerCase();
+            const filtered = allMovies.filter(movie => {
+                return movie.title.toLowerCase().includes(searchVal) || 
+                       movie.director.toLowerCase().includes(searchVal) ||
+                       movie.moviemonster.toLowerCase().includes(searchVal) ||
+                       movie.genrename.toLowerCase().includes(searchVal);
+            });
+            displayStandardGrid(filtered);
+        }
+
+        // 4. Parses the data array to build out our custom list dropdown items cleanly
+        function populateDropdownMenu(property, elementId) {
+            const dropdownUl = document.getElementById(elementId);
+            const uniqueTagsSet = new Set();
+            
+            allMovies.forEach(movie => {
+                const rawValue = movie[property];
+                if (rawValue) {
+                    rawValue.split(',').forEach(tag => {
+                        uniqueTagsSet.add(tag.trim());
+                    });
+                }
+            });
+
+            const sortedTags = Array.from(uniqueTagsSet).sort();
+            
+            let html = '';
+            sortedTags.forEach(tag => {
+                const safeTag = tag.replace(/'/g, "\\'");
+                
+                html += `<li><a href="#" onclick="filterBySingleTag('${property}', '${safeTag}'); return false;">${tag}</a></li>`;
+            });
+
+            dropdownUl.innerHTML = html;
+        }
+
+        // 4.5 Limits display block view down to your selected target tag
+        function filterBySingleTag(property, tagValue) {
+            document.getElementById('clearBtn').style.display = 'inline-block';
+            
+            const filteredMovies = allMovies.filter(movie => {
+                const columnValue = movie[property] ? movie[property].toLowerCase() : "";
+                return columnValue.includes(tagValue.toLowerCase());
+            });
+
+            displayStandardGrid(filteredMovies);
+        }
+
+        // 5. Reset to original frontpage list view
+        function resetView() {
+            document.getElementById('movieSearch').value = '';
+            document.getElementById('clearBtn').style.display = 'none';
+            displayStandardGrid(allMovies);
+        }
+
+        document.getElementById('movieSearch').addEventListener('input', handleSearch);
+        // Boot everything up
+        fetchMovies();
+    </script>
+</body>
+</html>
