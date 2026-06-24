@@ -16,10 +16,10 @@ app.add_middleware(
 # Microsoft SQL Server Connection Configuration
 CONNECTION_STRING = (
     "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=192.168.0.52;" 
-    "DATABASE=ArcadeBlockade;"
-    "UID=sa;"
-    "PWD=Password1;"
+    "SERVER=x.x.x.x;" 
+    "DATABASE=ArcadeDatabase;"
+    "UID=user;"
+    "PWD=Password123;"
     "TrustServerCertificate=yes;"
     "Encrypt=no;" 
 )
