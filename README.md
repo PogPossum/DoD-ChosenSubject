@@ -11,7 +11,7 @@
 <p>- sorted alphabetically in Games drop-down menus.</p>
 <p>- keeping the classic abmer terminal vibe.</p>
 <h3> -- Extras -- </h3>
-<p>I ended up deploying two over projects during this extracurricular, here are all the links;</p>
+<p>I ended up deploying two over projects during this extracurricular, here are all links to my deployments;</p>
 <p>https://ashiisarcade.ardenscor.com/</p>
 <p>https://spookshack.ardenscor.com/</p>
 <p>https://portfolio.ardenscor.com/</p>
