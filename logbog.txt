@@ -69,7 +69,7 @@ dag 9, d. 18/06
 dag 10, d.19/06
   - AFK
 
--- weekend uge 25--
+-- uge 26--
 dag 11, d. 22/06
   - AFK 
 
@@ -81,3 +81,6 @@ dag 12, d. 23/06
 dag 13, d. 24/06
   - har fået lagt projekt 2, horror-web, i github repo.
   - klargøring af presentation.
+
+dag 14, d. 25/06
+  - 
