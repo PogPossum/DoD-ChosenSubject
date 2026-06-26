@@ -1,0 +1,10 @@
+------------ ------------ ------------
+        -- DoD presentation --
+------------ ------------ ------------
+- problemstilling/mål med projekt
+- setup
+    - database
+    - docker
+    - netværk
+- webapps
+- næste steps
