@@ -90,4 +90,8 @@ dag 13, d. 24/06
   - klargøring af presentation.
 
 dag 14, d. 25/06
-  - 
+  - tweaking af arcade database, så at den havde clocked mine nintendo ds spil som gameboy advance sp spil, det blev rettet.
+  - klargøring af presentation.
+
+dag 25, d. 26/06
+  - lavet og afleveret video presentation.
