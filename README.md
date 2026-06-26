@@ -17,8 +17,7 @@
 <p>https://ashiisarcade.ardenscor.com/</p>
 <p>https://spookshack.ardenscor.com/</p>
 <p>https://portfolio.ardenscor.com/</p>
------------- ------------ ------------
-<h3> -- project setup -- </h3>
+
 
 <p>    |- projects.html</p>
 <p>    |- style.css</p>
