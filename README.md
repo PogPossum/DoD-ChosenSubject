@@ -19,24 +19,7 @@
 <p>https://portfolio.ardenscor.com/</p>
 ------------ ------------ ------------
 <h3> -- project setup -- </h3>
-<p>database (windows VM)</p>
-<p>    |-arcade-db</p>
-<p>        |-C:\arcade\</p>
-<p>            |-main.py</p>
-<p>    |-horror-db</p>
-<p>        |-C:\horror\</p>
-<p>            |-main.py</p>
-<p></p>
-<p>docker (ubuntu VM)</p>
-<p>|- arcade-web</p>
-<p>    |- index.html/js</p>
-<p>    |- style.css</p>
-<p>|- horror-web</p>
-<p>    |- index.html/js</p>
-<p>    |- style.css</p>
-<p>|- portfolio-web</p>
-<p>    |- index.html</p>
-<p>    |- about.html</p>
+
 <p>    |- projects.html</p>
 <p>    |- style.css</p>
 <p>    |- terminal.js</p>
