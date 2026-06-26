@@ -17,10 +17,3 @@
 <p>https://ashiisarcade.ardenscor.com/</p>
 <p>https://spookshack.ardenscor.com/</p>
 <p>https://portfolio.ardenscor.com/</p>
-
-
-<p>    |- projects.html</p>
-<p>    |- style.css</p>
-<p>    |- terminal.js</p>
-<p>        |- terminal.css</p>
-<p>|- cloudflare-tunnel</p>
