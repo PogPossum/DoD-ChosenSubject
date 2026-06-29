@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Ashii's Arcade API")
 
-# Allow your frontend HTML file to read data from this API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -13,7 +12,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Microsoft SQL Server Connection Configuration
 CONNECTION_STRING = (
     "DRIVER={ODBC Driver 18 for SQL Server};"
     "SERVER=x.x.x.x;" 
@@ -57,7 +55,6 @@ def get_all_games():
 def get_all_consoles():
     conn, cursor = get_db_cursor()
     
-    # ADDED: Release column to the SELECT query
     cursor.execute("SELECT ConID, Console, Company, Release FROM Console")
     
     columns = [column[0] for column in cursor.description]
@@ -74,7 +71,6 @@ def search_arcade(q: str = ""):
         
     conn, cursor = get_db_cursor()
     
-    # UPDATED: Replaced the fallback 9999 with the real C.Release year for console search rows
     query = """
         SELECT (G.Title + ' (' + CAST(G.Release AS VARCHAR(4)) + ') [' + TRIM(C.Console) + ']') AS Name, 
                'Game' AS Type, 
