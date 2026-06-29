@@ -53,7 +53,7 @@
     </main>
 
     <script>
-        let allMovies = []; // Global store for our original database data
+        let allMovies = []; 
 
         // 1. Fetch movies when the page loads
         async function fetchMovies() {
@@ -64,7 +64,7 @@
                 if (result.status === "SUCCESS") {
                     allMovies = result.data.sort((a, b) => a.title.localeCompare(b.title));
                     
-                    // Build our dynamic nested dropdown menus immediately!
+                    // Build dynamic nested dropdown menus immediately!
                     populateDropdownMenu('genrename', 'genre-dropdown');
                     populateDropdownMenu('moviemonster', 'monster-dropdown');
                     populateDropdownMenu('director', 'director-dropdown');
@@ -121,7 +121,7 @@
             displayStandardGrid(filtered);
         }
 
-        // 4. Parses the data array to build out our custom list dropdown items cleanly
+        // 4. Parses the data array to build custom list dropdown items cleanly -- needs fix
         function populateDropdownMenu(property, elementId) {
             const dropdownUl = document.getElementById(elementId);
             const uniqueTagsSet = new Set();
@@ -147,7 +147,7 @@
             dropdownUl.innerHTML = html;
         }
 
-        // 4.5 Limits display block view down to your selected target tag
+        // 4.5 Limits display block view down to selected target tag
         function filterBySingleTag(property, tagValue) {
             document.getElementById('clearBtn').style.display = 'inline-block';
             
