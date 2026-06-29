@@ -1,10 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import pypyodbc as odbc # Or whatever driver your arcade uses (pyodbc / pymssql)
+import pypyodbc as odbc 
 
 app = FastAPI()
 
-# Enable CORS so your frontend can communicate with it
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,7 +29,6 @@ def get_db_connection():
         print(f"Database connection failed: {e}")
         return None
 
-# 2. API Endpoint: Fetch all movies joined with their genres
 @app.get("/api/movies")
 def get_movies_by_genre():
     conn = get_db_connection()
