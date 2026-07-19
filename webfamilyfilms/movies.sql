@@ -1,12 +1,95 @@
------------- ------------ ------------
-
 CREATE TABLE Movies ( -- MovieID, Title, Release, Animanted, Location
-    MovieID int not null,
-    Title nchar(50) not null,
+    MovieID int identity(1,1),
+    Title nchar(60) not null,
     Release int not null,
     Animated nchar(5) not null,
     Location nchar(10) not null
 );
 
-insert into Movies (Title, Release, Animanted, Location) 
+delete from Movies
+insert into Movies (Title, Release, Animated, Location) 
 values
+--Loui movie list:
+('Pirates of the Caribbean:  Curse of the Black Pearl', 2003, 'n', 'Loui'),
+('Pirates of the Caribbean: Dead Mans Chest', 2006, 'n', 'Loui'),
+('Pirates of the Caribbean: On Stranger Tides', 2011, 'n', 'Loui'),
+('Narnia', 2005, 'n', 'Loui'),
+('Sådan Træner Du Din Drage', 2010, 'y','Loui'),
+('Sådan Træner Du Din Drage 2', 2014, 'y','Loui'),
+('Modig', 2012, 'y','Loui'),
+('Klokkeren fra Notre Dame', 1996, 'y','Loui'),
+('Tarzan', 1999, 'y','Loui'),
+('101 Dalmatinere 2', 2001, 'y','Loui'),
+('To På Flugt', 2010, 'y','Loui'),
+('Op', 2009, 'y','Loui'),
+('Bambi', 1942, 'y','Loui'),
+('Prinsen af Egypten', 1998, 'y','Loui'),
+('Vejen Til El Dorado', 2000, 'y','Loui'),
+('Mulan', 1998, 'y','Loui'),
+('Mulan 2', 2004, 'y','Loui'),
+
+--kat movie list:
+('Bambi', 1942, 'y', 'Kat'),
+('Askepot', 1950, 'y', 'Kat'),
+('Alice i Eventyland', 1951, 'y', 'Kat'),
+('Peter pan', 1953, 'y', 'Kat'),
+('Lady og Vagabonden', 1955, 'y', 'Kat'),
+('Lady og Vagabonden 2', 2001, 'y', 'Kat'),
+('Tornerose', 1959, 'y', 'Kat'),
+('101 Dalmatiner', 1961, 'y', 'Kat'),
+('Aristocats', 1970, 'y', 'Kat'),
+('Bernard og Bianca', 1977, 'y', 'Kat'),
+('Bernard og Bianca sos fra Australien', 1990, 'y', 'Kat'),
+('Mads og Mikkel', 1981, 'y', 'Kat'),
+('Oliver & Co', 1988, 'y', 'Kat'),
+('Den lille Havfrue', 1989, 'y', 'Kat'),
+('Aladdin', 1992, 'y', 'Kat'),
+('Pocahontas', 1995, 'y', 'Kat'),
+('Klokkeren fra Notre Dame', 1996, 'y','Kat'),
+('Herkules', 1997, 'y', 'Kat'),
+('Mulan', 1998, 'y', 'Kat'),
+('Tarzan', 1999, 'y', 'Kat'),
+('Kejserens Nye Flip', 2000, 'y', 'Kat'),
+('Atlantis: Det Forsvundne Rige', 2001, 'y', 'Kat'),
+('Skatteplaneten', 2002, 'y', 'Kat'),
+('Bjørne Brødre', 2003, 'y', 'Kat'),
+('Bolt', 2008, 'y', 'Kat'),
+('Prinsessen og Frøen', 2009, 'y', 'Kat'),
+('To På Flugt', 2010, 'y', 'Kat'),
+('Vilde Rolf', 2012, 'y', 'Kat'),
+('Zootropolis', 2016, 'y', 'Kat'),
+('Modig', 2012, 'y', 'Kat'),
+('Sådan Træner Du Din Drage', 2010, 'y', 'Kat'),
+('Lilo og Stich 2', 2005, 'y', 'Kat'),
+('Løvernes Konge', 1994, 'y', 'Kat'), 
+('Løvernes Konge 2', 1998, 'y', 'Kat'),
+('Løvernes Konge 3', 2004, 'y', 'Kat'),
+('Op', 2009, 'y', 'Kat'),
+('Frost', 2013, 'y', 'Kat'),
+('Frost 2',  2019, 'y', 'Kat'),
+('Taran og Den Magiske Gryde', 1985, 'y', 'Kat'),
+
+--heidi movie list:
+('Lilo & Stitch', 2002, 'y', 'Heidi'),
+('Pocahontas', 1995, 'y', 'Heidi'),
+('Prinsessen og Frøen', 2009, 'y', 'Heidi'),
+('Inderst Inde', 2015, 'y', 'Heidi'),
+('Bjørne Brødre', 2003, 'y', 'Heidi'),
+('Bjørne Brødre 2', 2006, 'y', 'Heidi'),
+('Skønheden og Udyret', 2017,  'n', 'Heidi'),
+('Klokkeren fra Notre Dame', 1996, 'y', 'Heidi'),
+('Coco', 2017, 'y', 'Heidi'),
+('Skønheden og Udyret', 1991 , 'y', 'Heidi'),
+('Big Hero 6', 2014, 'y', 'Heidi'),
+('Croods',  2013, 'y', 'Heidi'),
+('Madagascar', 2005, 'y', 'Heidi'),
+('Biler', 2006, 'y', 'Heidi'),
+('Skatteplaneten', 2002, 'y', 'Heidi'),
+('Stor Ståhaj', 2004, 'y', 'Heidi'),
+('Sværdet i Stenen', 1963, 'y', 'Heidi'),
+('Shrek', 2001, 'y', 'Heidi'),
+('Mary Poppins Returns', 2018, 'n', 'Heidi');
+
+--
+select * from Movies
+order by Title Asc;
