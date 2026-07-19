@@ -1,1 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
 
+:root{
+    --primary-color: #11121a;
+    --secondary-color: #2c2f30;
+    --hover-color: #3d3e4b;
+    --accent-color: #f3ae48;
+    --text-color: #c9c9c9;
+    --login-color: #3d3e4b;
+}
+
+h1{
+    font-size: 3rem;
+    color: var(--accent-color);
+}
+h2{
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+h3{
+    font-size: 1.3rem;
+    text-align: left;
+    color: var(--text-color);
+}
+/* spacer colour */
+h6{ 
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.login-color{
+    color: var(--login-color);
+    font-weight: bold;
+}
+
+
+*{
+    margin: 0;
+    padding: 1;
+    box-sizing: border-box;
+}
+html{
+    font-family: "Fascinate Inline", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+}
+body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--primary-color);
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+main{
+    padding: min(5em, 7%);
+}
+main p{
+    margin-top: .35em;
+}
+
+/* nav bar */
+nav{
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--hover-color);
+}
+nav ul{
+    list-style: none;
+    display: flex;
+}
+nav .home-li{
+    margin-right: auto;
+}
+nav li{
+    display: flex;
+}
+nav a{
+    display: flex;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 1em 2em;
+    transition: background-color 150ms ease;
+}
+nav a:hover{
+    background-color: var(--hover-color);
+}
+nav a.active-link{
+    border-bottom: 2px solid var(--text-color);
+} 
+nav a.accent-link{
+    background-color: var(--accent-color);
+}
+
+
+/* blink animation */
+.cursor{ 
+    font-weight: 700;
+    animation: 1s blink step-end infinite;
+}
+@keyframes blink{
+    from,
+    to{
+        color: transparent;
+    }
+    50%{
+        color: var(--accent-color);
+    }
+}
+
+/* Responsive hamburger */
+.hamburger{
+    display: none; /* shown on small screens */
+    position: fixed;
+    right: 1rem;
+    top: 0.75rem;
+    z-index: 1200;
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    font-size: 1.6rem;
+    padding: .4rem .6rem;
+    cursor: pointer;
+}
