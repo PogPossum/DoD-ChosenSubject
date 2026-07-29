@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
 :root{
     --primary-color: #11121a;
@@ -12,28 +12,19 @@
 h1{
     font-size: 3rem;
     color: var(--accent-color);
-    font-family: "Fascinate Inline", system-ui;
+    font-family: "Bungee", sans-serif;
 }
 h2{
     font-size: 1.5rem;
     color: var(--accent-color);
-    font-family: "Fascinate Inline", system-ui;
+    font-family: "Bungee", sans-serif;
 }
 h3{
     font-size: 1.3rem;
     text-align: left;
     color: var(--text-color);
-    font-family: "Fascinate Inline", system-ui;
+    font-family: "Bungee", sans-serif;
     letter-spacing: 1px;
-}
-h6{ 
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-}
-
-.login-color{
-    color: var(--login-color);
-    font-weight: bold;
 }
 
 *{
@@ -43,7 +34,7 @@ h6{
 }
 
 html{
-    font-family: "Fascinate Inline", system-ui;
+    font-family: "Bungee", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 1.2rem;
@@ -65,39 +56,6 @@ main p{
     margin-top: .35em;
 }
 
-/* Nav bar */
-nav{
-    background-color: var(--primary-color);
-    border-bottom: 1px solid var(--hover-color);
-    font-family: "Fascinate Inline", system-ui;
-}
-nav ul{
-    list-style: none;
-    display: flex;
-}
-nav .home-li{
-    margin-right: auto;
-}
-nav li{
-    display: flex;
-}
-nav a{
-    display: flex;
-    text-decoration: none;
-    color: var(--text-color);
-    padding: 1em 2em;
-    transition: background-color 150ms ease;
-}
-nav a:hover{
-    background-color: var(--hover-color);
-}
-nav a.active-link{
-    border-bottom: 2px solid var(--text-color);
-} 
-nav a.accent-link{
-    background-color: var(--accent-color);
-}
-
 /* Terminal Search Bar */
 .search-container {
     margin-bottom: 25px;
@@ -107,22 +65,12 @@ nav a.accent-link{
     border: none;
     border-bottom: 2px solid var(--accent-color);
     color: var(--accent-color);
-    font-family: "Fascinate Inline", system-ui;
+    font-family: "Bungee", sans-serif;
     font-size: 1.5rem;
     padding: 5px 10px;
     outline: none;
     width: 60%;
     max-width: 400px;
-}
-
-/* Blink Animation */
-.cursor{ 
-    font-weight: 700;
-    animation: 1s blink step-end infinite;
-}
-@keyframes blink{
-    from, to{ color: transparent; }
-    50%{ color: var(--accent-color); }
 }
 
 /* Location Selector Buttons */
@@ -140,7 +88,7 @@ nav a.accent-link{
     color: var(--text-color);
     border: 1px solid var(--hover-color);
     padding: 8px 18px;
-    font-family: "Fascinate Inline", system-ui;
+    font-family: "Bungee", sans-serif;
     font-size: 1.3rem;
     cursor: pointer;
     transition: all 150ms ease;
@@ -194,69 +142,6 @@ nav a.accent-link{
 }
 .anim-tag {
     color: var(--text-color);
-}
-
-/* Responsive Hamburger */
-.hamburger{
-    display: none;
-    position: fixed;
-    right: 1rem;
-    top: 0.75rem;
-    z-index: 1200;
-    background: transparent;
-    color: var(--text-color);
-    border: none;
-    font-size: 1.6rem;
-    padding: .4rem .6rem;
-    cursor: pointer;
-}
-
-@media (max-width: 700px){
-    body{
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .hamburger{
-        display: block;
-    }
-    nav#siteNav{
-        position: fixed;
-        right: 0;
-        top: 0;
-        height: 100vh;
-        width: 0;
-        overflow: hidden;
-        background-color: rgba(17,18,26,0.98);
-        box-shadow: -6px 0 20px rgba(0,0,0,0.5);
-        transition: width 260ms ease;
-        z-index: 1100;
-    }
-    nav#siteNav ul{
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        padding-top: 3.5rem;
-    }
-    nav#siteNav a{
-        padding: 1rem 1.25rem;
-        border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-    nav#siteNav.open{
-        width: 260px;
-    }
-    nav ul{
-        display: none;
-    }
-    nav#siteNav.open ul{
-        display: flex;
-    }
-    main, .main-content, section, footer{
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    .terminal-input {
-        width: 100%;
-    }
 }
 
 .flex-container{
