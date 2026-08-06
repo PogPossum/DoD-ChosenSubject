@@ -15,6 +15,6 @@
 ------------ ------------ ------------
 <h3> -- Extras -- </h3>
 <p>I ended up deploying two over projects during this extracurricular, here are all links to my deployments;</p>
-<p>https://ashiisarcade.ardenscor.com/</p>
-<p>https://spookshack.ardenscor.com/</p>
-<p>https://portfolio.ardenscor.com/</p>
+<p><li>https://ashiisarcade.ardenscor.com/</li></p>
+<p><li>https://spookshack.ardenscor.com/</li></p>
+<p><li>https://portfolio.ardenscor.com/</li></p>
